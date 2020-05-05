@@ -1,6 +1,6 @@
 # The Cards class creates cards, and contains their suits and values.
 class Cards
-  SUIT = ['♠', '♥', '♣', '♦']
+  SUIT = %w[♠ ♥ ♣ ♦]
   VALUE = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
 
   attr_reader :suit, :value, :rank
@@ -18,7 +18,7 @@ class Cards
   def calculate_value(rank)
     if ace
       11
-    elsif ['j', 'Q', 'K']
+    elsif %w[j Q K].include? rank
       10
     else
       rank
