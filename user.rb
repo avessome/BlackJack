@@ -1,10 +1,10 @@
 # The User class contains username, cards and total points and amount of money.
 class User
-  attr_accessor :username, :money, :cards_sum
+  attr_accessor :name, :money, :cards_sum
   attr_reader :cards
 
-  def initialize(name = 'Username')
-    @username = username
+  def initialize(name = 'User')
+    @name = name
     @money = 100
     @cards = []
     @cards_sum = 0
@@ -16,8 +16,8 @@ class User
   end
 
   def sum
-    @cards_sum = @cards.sum(:&value)
-    @cards_sum -= 10 if @cards.any?(:&ace) && @cards_sum > 21
+    @cards_sum = @cards.sum(&:value)
+    @cards_sum -= 10 if @cards.any?(&:ace) && @cards_sum > 21
   end
 
   def make_bet(bet)

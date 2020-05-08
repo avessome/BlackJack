@@ -1,5 +1,7 @@
 #The BlackJack class contains game mechanics.
 class BlackJack
+  BET = 10
+
   attr_reader :user, :dealer, :bank, :deck
 
   def initialize(user)
@@ -9,17 +11,15 @@ class BlackJack
     @bank = 0
   end
 
-  BET = 10
-
   def new_con
     return unless @bank.zero?
     return if @user.money < BET || @dealer.money < BET
 
     @deck = Deck.new
-    @bank += user.make_bet(BET)
-    @bank += dealer.make_bet(BET)
     @user.cards.clear
     @dealer.cards.clear
+    @bank += user.make_bet(BET)
+    @bank += dealer.make_bet(BET)
     @user.cards << @deck.deal
     @dealer.cards << @deck.deal
     @user.cards << @deck.deal
@@ -29,15 +29,15 @@ class BlackJack
   end
 
   def win
-    if @user.sum > @dealer.sum && @user.sum <= 21
+    if @user.cards_sum > @dealer.cards_sum && @user.cards_sum <= 21
       @user
-    elsif @dealer.sum > @user.sum && @dealer <=21
+    elsif @dealer.cards_sum > @user.cards_sum && @dealer <= 21
       @dealer
-    elsif @user.sum > 21
+    elsif @user.cards_sum > 21
       @dealer
-    elsif @dealer.sum > 21
+    elsif @dealer.cards_sum > 21
       @user
-    elsif @user.sum == @dealer.sum
+    elsif @user.cards_sum == @dealer.cards_sum
       nil
     end
   end
