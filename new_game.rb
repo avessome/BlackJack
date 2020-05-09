@@ -1,5 +1,5 @@
 require_relative 'black_jack'
-require_relative 'cards'
+require_relative 'card'
 require_relative 'user'
 require_relative 'dealer'
 require_relative 'deck'

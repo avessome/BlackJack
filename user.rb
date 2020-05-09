@@ -11,6 +11,7 @@ class User
   end
 
   def take_cards(deck)
+    return if @cards.size == 3
     @cards << deck.deal
     sum
   end
