@@ -31,7 +31,7 @@ class BlackJack
   def win
     if @user.cards_sum > @dealer.cards_sum && @user.cards_sum <= 21
       @user
-    elsif @dealer.cards_sum > @user.cards_sum && @dealer <= 21
+    elsif @dealer.cards_sum > @user.cards_sum && @dealer.cards_sum <= 21
       @dealer
     elsif @user.cards_sum > 21
       @dealer

@@ -18,7 +18,7 @@ class Card
   def calculate_value(rank)
     if ace
       11
-    elsif %w[j Q K].include? rank
+    elsif %w[J Q K].include? rank
       10
     else
       rank
