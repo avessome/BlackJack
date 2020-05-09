@@ -1,13 +1,19 @@
 #Interface
 class Interface
-  BORDERLINE = '-' * 50
-  NEWLINE = "\n"
 
   attr_reader :black_jack
 
   def initialize(black_jack)
     @black_jack = black_jack
     start
+  end
+
+  def borderline
+    puts '-' * 50
+  end
+
+  def new_line
+    puts "\n"
   end
 
   def start
@@ -19,21 +25,21 @@ class Interface
 
   def start_game
     black_jack.new_con
-    puts NEWLINE
+    new_line
     puts "Добро пожаловать в игру, #{black_jack.user.name}"
-    puts NEWLINE
+    new_line
 
     loop do
       puts "Банк: #{black_jack.bank}\n\n"
-      puts NEWLINE
+      new_line
 
-      puts BORDERLINE
+      borderline
       puts "Ваши деньги: #{black_jack.user.money}\n\n"
       print 'Ваши карты:  '
       black_jack.user.cards.each { |card| print "#{card.rank}#{card.suit}  " }
-      puts NEWLINE
+      new_line
       puts "Сумма очков: #{black_jack.user.cards_sum}"
-      puts BORDERLINE
+      borderline
 
       if black_jack.bank != 0
         puts "Карты Диллера: ***\n\n"
@@ -41,10 +47,10 @@ class Interface
       else
         print 'Карты Диллера: '
         black_jack.dealer.cards.each { |card| print "#{card.rank}#{card.suit}  " }
-        puts NEWLINE
+        new_line
         puts "Сумма очков: #{black_jack.dealer.cards_sum}"
       end
-      puts BORDERLINE
+      borderline
 
       if black_jack.bank != 0
         start_menu
@@ -65,11 +71,11 @@ class Interface
 
   def start_menu
     messages = ['Выберите действие, введя номер из списка: ',
-                BORDERLINE,
+                borderline,
                 ' 1 - Пропустить.',
                 ' 2 - Добавить карту.',
                 ' 3 - Открыть карты.',
-                BORDERLINE]
+                borderline]
     messages.each { |item| puts item }
   end
 
@@ -91,10 +97,10 @@ class Interface
 
   def menu_2
     messages = ['Выберите действие, введя номер из списка: ',
-                BORDERLINE,
+                borderline,
                 ' 1 - Продолжить.',
                 ' 0 - Выйти из игры.',
-                BORDERLINE]
+                borderline]
     messages.each { |item| puts item }
   end
 
@@ -104,10 +110,10 @@ class Interface
 
   def menu_3
     messages = ['Выберите действие, введя номер из списка: ',
-                BORDERLINE,
+                borderline,
                 ' 1 - Новая игра.',
                 ' 0 - Выйти из игры.',
-                BORDERLINE]
+                borderline]
     messages.each { |item| puts item }
   end
 

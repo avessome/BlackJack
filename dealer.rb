@@ -5,7 +5,6 @@ class Dealer < User
   end
 
   def take_cards(deck)
-    @cards << deck.deal if @cards_sum < 17
-    sum
+    super if @cards_sum < 17
   end
 end
